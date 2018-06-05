@@ -7,7 +7,7 @@ public class entrega1
   
   public static void main(String[] args)
   {
-    out.println(nextDay(2008,12,31));
+    out.println(dayOfWeek(2018,6,5));
   }
 
 /**
@@ -124,4 +124,16 @@ public static String nextDay(int year,int month, int day){
 		return "N/A";
 	}
 }
+
+
+    public static String dayOfWeek(int year,int month, int day){
+        int a,y,m,d;
+        String[] DAYS_OF_WEEK = {"Domingo","Lunes","Martes","Miercoles","Jueves","Viernes","Sabado"};
+        a = (14 - month) / 12;
+        y = year - a;
+        m = month + 12*a - 2;
+        d = (day + y + y/4 - y/100 + y/400 + (31*m)/12) % 7;
+        return DAYS_OF_WEEK[d];
+    }
+
 }
