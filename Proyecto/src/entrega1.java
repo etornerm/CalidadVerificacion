@@ -7,7 +7,7 @@ public class entrega1
   
   public static void main(String[] args)
   {
-    out.println(dayOfWeek(2018,6,5));
+    out.println(dayOfWeek(2008,6,5));
   }
 
 /**
@@ -104,7 +104,7 @@ public static int dayOfYear(int year,int month, int dayOfMonth){
  * @param month es el mes que se va verificar.
  * @param day es el dia que se va verificar.
  * @return el metodo devuelve una fecha en tuplas de tres números enteros positivos (ternas),
- * en este orden: (año, mes, día).
+ * en este orden: (año, mes, día), si la fecha no es valida devuelve N/A.
  * Por ejemplo, nextDay(1890,12,31)=(1891,1,1).
  */
 public static String nextDay(int year,int month, int day){
@@ -125,15 +125,24 @@ public static String nextDay(int year,int month, int day){
 	}
 }
 
-
+    /**
+     * Metodo que determina el dia de la semana de una fecha determinada. El algoritmo usado se tomo de esta pagina http://stason.org/TULARC/society/calendars/index.html
+     * @param year es el año que se va verificar.
+     * @param month es el mes que se va verificar.
+     * @param day es el dia que se va verificar.
+     * @return el metodo devuelve el dia de la semana, de de una fecha determinada. si la fecha no es valida devuelve N/A
+     */
     public static String dayOfWeek(int year,int month, int day){
-        int a,y,m,d;
-        String[] DAYS_OF_WEEK = {"Domingo","Lunes","Martes","Miercoles","Jueves","Viernes","Sabado"};
-        a = (14 - month) / 12;
-        y = year - a;
-        m = month + 12*a - 2;
-        d = (day + y + y/4 - y/100 + y/400 + (31*m)/12) % 7;
-        return DAYS_OF_WEEK[d];
+        if(isValidDate(year,month,day)){
+            int a,y,m,d;
+            String[] DAYS_OF_WEEK = {"Domingo","Lunes","Martes","Miercoles","Jueves","Viernes","Sabado"};
+            a = (14 - month) / 12;
+            y = year - a;
+            m = month + 12*a - 2;
+            d = (day + y + y/4 - y/100 + y/400 + (31*m)/12) % 7;
+            return DAYS_OF_WEEK[d];
+        }else {
+            return "N/A";
+        }
     }
-
 }
