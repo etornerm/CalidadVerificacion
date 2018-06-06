@@ -7,7 +7,7 @@ public class entrega1
   
   public static void main(String[] args)
   {
-    out.println(dayOfWeek(2008,6,5));
+    out.println(isLeapYear(1700));
   }
 
 /**
@@ -62,15 +62,11 @@ public static int dayOfYear(int year,int month, int dayOfMonth){
 		int[] DIVISIBLE_BY = {400,4};
 		int[] NOT_DIVISIBLE_BY = {100};
 		
-		if(year % NOT_DIVISIBLE_BY[0] == 0 ){
-			return false;
-		}
-		if(	(year % DIVISIBLE_BY[0] == 0) || 
-			(year % DIVISIBLE_BY[1] == 0)){
+		if(year % DIVISIBLE_BY[0] == 0 || (year % DIVISIBLE_BY[1] == 0 && year % NOT_DIVISIBLE_BY[0] != 0)){
 			return true;
 		}
-	  
-	  return false;
+
+	    return false;
 	}
 
 /**
