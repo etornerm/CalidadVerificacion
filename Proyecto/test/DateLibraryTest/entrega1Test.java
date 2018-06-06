@@ -1,20 +1,21 @@
 package DateLibraryTest;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotEquals;
-import org.junit.jupiter.api.Test;
-
 import DateLibrary.entrega1;
 
-class entrega1Test {
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotEquals;
+
+import org.junit.Test;
+
+public class entrega1Test {
 
 	@Test
-	void validateCorrectNextDate() {
+	public void validateCorrectNextDate() {
 		assertEquals(entrega1.nextDay(1987, 2, 4), "(1987,2,5)");
 	}
 	
 	@Test
-	void validateIncorrectNextDate() {
+	public void validateIncorrectNextDate() {
 		assertNotEquals(entrega1.nextDay(1987, 2, 4), "(1987,2,7)");
 	}
 
