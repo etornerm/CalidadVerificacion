@@ -10,12 +10,12 @@ import org.junit.Test;
 public class entrega1Test {
 
 	@Test
-	public void validateCorrectNextDate() {
+	public void validateCorrectNextDay() {
 		assertEquals(entrega1.nextDay(1987, 2, 4), "(1987,2,5)");
 	}
 	
 	@Test
-	public void validateIncorrectNextDate() {
+	public void validateIncorrectNextDay() {
 		assertNotEquals(entrega1.nextDay(1987, 2, 4), "(1987,2,7)");
 	}
 
