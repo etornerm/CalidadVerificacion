@@ -12,6 +12,7 @@ public class entrega1
 	  out.println(isLeapYear(1700));
 	  out.println(isValidDate(1992,5,13));
 	  out.println(dayOfWeek(2018,9,22));
+	  out.println(nextDay(2015,10,17));
   }
 
 /**
