@@ -8,6 +8,8 @@ import org.junit.Test;
 public class entrega1Test {
 
 	// El número que contiene cada método corresponde al número del caso de prueba de la tabla
+	
+	/** Set de pruebas para validar el día siguiente a una fecha dada**/
 	@Test
 	public void validateNextDay_1() {
 		assertEquals(entrega1.nextDay(1582, 2, 12), "N/A");
@@ -71,6 +73,73 @@ public class entrega1Test {
 	@Test
 	public void validateNextDay_13() {
 		assertEquals(entrega1.nextDay(1583, 12, 31), "(1584,1,1)");
+	}
+	
+	/** Set de pruebas para validar el día del anno**/
+	
+	@Test
+	public void validateDayOfYear_1() {
+		assertEquals(entrega1.dayOfYear(1582, 2, 12), 0);
+	}
+	
+	@Test
+	public void validateDayOfYear_2() {
+		assertEquals(entrega1.dayOfYear(-2009, 12, 25), 0);
+	}
+	
+	@Test
+	public void validateDayOfYear_3() {
+		assertEquals(entrega1.dayOfYear(1583, 1, 30), 30);
+	}
+	
+	@Test
+	public void validateDayOfYear_4() {
+		assertEquals(entrega1.dayOfYear(2015,5,31), 151);
+	}
+	
+	@Test
+	public void validateDayOfYear_5() {
+		assertEquals(entrega1.dayOfYear(1998,-3,4), 0);
+	}
+	
+	@Test
+	public void validateDayOfYear_6() {
+		assertEquals(entrega1.dayOfYear(1776,0,13), 0);
+	}
+	
+	@Test
+	public void validateDayOfYear_7() {
+		assertEquals(entrega1.dayOfYear(2003,1,17), 17);
+	}
+	
+	@Test
+	public void validateDayOfYear_8() {
+		assertEquals(entrega1.dayOfYear(1678,12,8), 342);
+	}
+	
+	@Test
+	public void validateDayOfYear_9() {
+		assertEquals(entrega1.dayOfYear(1991,4,-6), 0);
+	}
+	
+	@Test
+	public void validateDayOfYear_10() {
+		assertEquals(entrega1.dayOfYear(2003,8,0), 0);
+	}
+	
+	@Test
+	public void validateDayOfYear_11() {
+		assertEquals(entrega1.dayOfYear(1936,10,1), 275);
+	}
+	
+	@Test
+	public void validateDayOfYear_12() {
+		assertEquals(entrega1.dayOfYear(1852,3,31), 91);
+	}
+	
+	@Test
+	public void validateDayOfYear_13() {
+		assertEquals(entrega1.dayOfYear(1583, 12, 31), 365);
 	}
 	
 

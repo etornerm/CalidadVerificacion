@@ -8,7 +8,7 @@ public class entrega1
   
   public static void main(String[] args)
   {
-	  out.println(dayOfYear(1700,3,15));
+	  out.println(dayOfYear(1853,12,31));
 	  out.println(isLeapYear(1700));
 	  out.println(isValidDate(1992,5,13));
 	  out.println(dayOfWeek(2018,9,22));
