@@ -1,5 +1,5 @@
 package DateLibrary;
-import java.lang.Math; 
+
 import java.util.stream.IntStream;
 import static java.lang.System.*;
 
@@ -8,7 +8,10 @@ public class entrega1
   
   public static void main(String[] args)
   {
-    out.println(isLeapYear(1700));
+	  out.println(dayOfYear(1700,3,15));
+	  out.println(isLeapYear(1700));
+	  out.println(isValidDate(1992,5,13));
+	  out.println(dayOfWeek(2018,9,22));
   }
 
 /**
@@ -20,18 +23,19 @@ public class entrega1
  * por ejemplo, dayOfYear(2,29,2008)=60.
  */
 public static int dayOfYear(int year,int month, int dayOfMonth){
+	int dayOfYear = 0;
+	
 	if(isValidDate(year,month,dayOfMonth)){
-		int dayOfYear = dayOfMonth;
+		dayOfYear = dayOfMonth;
 		
 		for(int i = 1; i < month; i++)
 		{
 			dayOfYear = dayOfYear + daysByMonth(i,year);
 		}
 		
-		return dayOfYear;
 	}
 	
-	return 0;
+	return dayOfYear;
 }
 
 /**
@@ -43,14 +47,21 @@ public static int dayOfYear(int year,int month, int dayOfMonth){
  */
 	public static int daysByMonth(int month,int year){
 		int[] MONTH_WITH_31_DAYS = {1,3,5,7,8,10,12};
+		int MONTH_DAYS_31 = 31;
+		int MONTH_DAYS_28 = 28;
+		int MONTH_DAYS_30 = 30;
+		
+		int currentMonthDays =  0;
 	  
 		if(IntStream.of(MONTH_WITH_31_DAYS).anyMatch(x -> x == month)){
-			return 31;
+			currentMonthDays =  MONTH_DAYS_31;
 		} else if(month == 2){
-			return 28 + (isLeapYear(year) ? 1 : 0);
+			currentMonthDays =  MONTH_DAYS_28 + (isLeapYear(year) ? 1 : 0);
 		} else {
-			return 30;
+			 currentMonthDays = MONTH_DAYS_30;
 		}
+		
+		return currentMonthDays;
 	}
 
 /**
@@ -63,11 +74,13 @@ public static int dayOfYear(int year,int month, int dayOfMonth){
 		int[] DIVISIBLE_BY = {400,4};
 		int[] NOT_DIVISIBLE_BY = {100};
 		
+		Boolean leapYear = false;
+		
 		if(year % DIVISIBLE_BY[0] == 0 || (year % DIVISIBLE_BY[1] == 0 && year % NOT_DIVISIBLE_BY[0] != 0)){
-			return true;
+			leapYear =  true;
 		}
 
-	    return false;
+	    return leapYear;
 	}
 
 /**
@@ -80,19 +93,20 @@ public static int dayOfYear(int year,int month, int dayOfMonth){
  */
 	public static boolean isValidDate(int year,int month, int day){
 		int MIMIMUM_YEAR = 1582;
+		Boolean dateValid = true;
 		
 		if(year < MIMIMUM_YEAR){
-			return false;
+			dateValid =  false;
 		}
 		if(month > 12 || month < 1) {
-			return false;
+			dateValid =  false;
 		}
 		
 		if(daysByMonth(month,year) < day){
-			return false;
+			dateValid =  false;
 		}
 		
-		return true;
+		return dateValid;
 	}
 
 /**
@@ -108,18 +122,21 @@ public static String nextDay(int year,int month, int day){
 	int ADD_DAY = 1;
 	int ADD_MONTH = 1;
 	int ADD_YEAR = 1;
+	String nextDayInfo = "";
 
 	if(isValidDate(year,month,day)){
 		if(isValidDate(year,month,day + ADD_DAY)){
-			return "("+year+","+month+","+(day + ADD_DAY)+")";
+			nextDayInfo =  "("+year+","+month+","+(day + ADD_DAY)+")";
 		}else if(isValidDate(year,month + ADD_MONTH,ADD_DAY)){
-            return "("+year+","+(month + ADD_MONTH)+","+ADD_DAY+")";
+			nextDayInfo =  "("+year+","+(month + ADD_MONTH)+","+ADD_DAY+")";
 		}else {
-            return "("+(year+ADD_YEAR)+","+ADD_MONTH+","+ADD_DAY+")";
+			nextDayInfo =  "("+(year+ADD_YEAR)+","+ADD_MONTH+","+ADD_DAY+")";
 		}
 	}else {
-		return "N/A";
+		nextDayInfo = "N/A";
 	}
+	
+	return nextDayInfo;
 }
 
     /**
@@ -130,6 +147,9 @@ public static String nextDay(int year,int month, int day){
      * @return el metodo devuelve el dia de la semana, de de una fecha determinada. si la fecha no es valida devuelve N/A
      */
     public static String dayOfWeek(int year,int month, int day){
+    	
+    		String dayOfWeekInfo = "";
+    		
         if(isValidDate(year,month,day)){
             int a,y,m,d;
             String[] DAYS_OF_WEEK = {"Domingo","Lunes","Martes","Miercoles","Jueves","Viernes","Sabado"};
@@ -137,9 +157,11 @@ public static String nextDay(int year,int month, int day){
             y = year - a;
             m = month + 12*a - 2;
             d = (day + y + y/4 - y/100 + y/400 + (31*m)/12) % 7;
-            return DAYS_OF_WEEK[d];
+            dayOfWeekInfo =  DAYS_OF_WEEK[d];
         }else {
-            return "N/A";
+        		dayOfWeekInfo =  "N/A";
         }
+        
+        return dayOfWeekInfo;
     }
 }
