@@ -2,6 +2,7 @@ package DateLibraryTest;
 
 import DateLibrary.entrega1;
 import static org.junit.Assert.assertEquals;
+
 import org.junit.Test;
 
 public class entrega1Test {
@@ -66,5 +67,11 @@ public class entrega1Test {
 	public void validateNextDay_12() {
 		assertEquals(entrega1.nextDay(1852,3,31), "(1852,4,1)");
 	}
+	
+	@Test
+	public void validateNextDay_13() {
+		assertEquals(entrega1.nextDay(1583, 12, 31), "(1584,1,1)");
+	}
+	
 
 }
