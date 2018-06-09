@@ -1,17 +1,8 @@
 package DateLibrary;
 
-import static java.lang.System.out;
-
 import java.util.stream.IntStream;
 
 public class CustomDateChecker {
-	
-	  public static void main(String[] args)
-	  {
-		
-		  out.println(getNextDay(1582,2,12));
-	  }
-
 
     public static boolean isDateValid(int year, int month, int day) {
         return (isYearValid(year) && isMonthValid(month) && isDayValid(year, month, day));
