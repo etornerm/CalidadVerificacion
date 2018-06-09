@@ -173,5 +173,69 @@ public class entrega1Test {
 	/**Casos de prueba para el método dayOfWeek**/
 
 	
+	@Test
+	public void validateDayOfWeek_1() {
+		assertEquals(entrega1.dayOfWeek(1582, 2, 12), "N/A");
+	}
+	
+	@Test
+	public void validateDayOfWeek_2() {
+		assertEquals(entrega1.dayOfWeek(-2009, 12, 25), "N/A");
+	}
+	
+	@Test
+	public void validateDayOfWeek_3() {
+		assertEquals(entrega1.dayOfWeek(1583, 1, 30), "Domingo");
+	}
+	
+	@Test
+	public void validateDayOfWeek_4() {
+		assertEquals(entrega1.dayOfWeek(2015,5,31), "Domingo");
+	}
+	
+	@Test
+	public void validateDayOfWeek_5() {
+		assertEquals(entrega1.dayOfWeek(1998,-3,4), "N/A");
+	}
+	
+	@Test
+	public void validateDayOfWeek_6() {
+		assertEquals(entrega1.dayOfWeek(1776,0,13), "N/A");
+	}
+	
+	@Test
+	public void validateDayOfWeek_7() {
+		assertEquals(entrega1.dayOfWeek(2003,1,17), "Viernes");
+	}
+
+	@Test
+	public void validateDayOfWeek_8() {
+		assertEquals(entrega1.dayOfWeek(1678,12,8), "Jueves");
+	}
+	
+	@Test
+	public void validateDayOfWeek_9() {
+		assertEquals(entrega1.dayOfWeek(1991,4,-6), "N/A");
+	}
+	
+	@Test
+	public void validateDayOfWeek_10() {
+		assertEquals(entrega1.dayOfWeek(2003,8,0), "N/A");
+	}
+	
+	@Test
+	public void validateDayOfWeek_11() {
+		assertEquals(entrega1.dayOfWeek(1936,10,1), "Jueves");
+	}
+	
+	@Test
+	public void validateDayOfWeek_12() {
+		assertEquals(entrega1.dayOfWeek(1852,3,31), "Miercoles");
+	}
+	
+	@Test
+	public void validateDayOfWeek_13() {
+		assertEquals(entrega1.dayOfWeek(1583, 12, 31), "Sabado");
+	}
 
 }
