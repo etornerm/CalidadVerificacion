@@ -35,7 +35,7 @@ public class CustomDateChecker {
         boolean condition1 = yearIsDivisibleBy(4, year);
         boolean condition2 = yearIsDivisibleBy(100, year);
         boolean condition3 = yearIsDivisibleBy(400, year);
-        return ((condition1 && !condition2)||(condition2 && condition3)) ? true : false;
+        return ((condition1 && !condition2)||(condition2 && condition3));
     }
 
     private static boolean yearIsDivisibleBy(int divisor, int year) {
