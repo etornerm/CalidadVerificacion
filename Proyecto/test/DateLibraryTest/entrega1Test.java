@@ -3,8 +3,12 @@ package DateLibraryTest;
 import DateLibrary.entrega1;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 
 import org.junit.Test;
+
+import DateLibrary.CustomDateChecker;
 
 public class entrega1Test {
 
@@ -142,6 +146,32 @@ public class entrega1Test {
 	public void validateDayOfYear_13() {
 		assertEquals(entrega1.dayOfYear(1583, 12, 31), 365);
 	}
+	
+/**Casos de prueba para el método isLeapYear**/
+	
+	@Test
+	public void isValidDate() {
+		assertFalse(entrega1.isLeapYear(1582));
+	}
+
+	
+	@Test
+	public void validateIsLeapYear_2() {
+		assertFalse(entrega1.isLeapYear(-2009));
+	}
+	
+	@Test
+	public void validateIsLeapYear_3() {
+		assertFalse(entrega1.isLeapYear(1583));
+	}
+	
+	@Test
+	public void validateIsLeapYear_4() {
+		assertTrue(entrega1.isLeapYear(1852));
+	}
+	
+	/**Casos de prueba para el método dayOfWeek**/
+
 	
 
 }
