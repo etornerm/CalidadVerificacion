@@ -92,6 +92,18 @@ public class TestingPart1 {
     }
 
     @Test
+    public void invalidLeapYearNegative() {
+        boolean a = CustomDateChecker.isLeapYear(-1500);
+        Assert.assertFalse(a);
+    }
+
+    @Test
+    public void invalidLeapYear1582() {
+        boolean a = CustomDateChecker.isLeapYear(1582);
+        Assert.assertFalse(a);
+    }
+
+    @Test
     public void validNextDay() {
         String a = CustomDateChecker.getNextDay(1988, 9, 12);
         Assert.assertEquals("(1988,9,13)", a);
