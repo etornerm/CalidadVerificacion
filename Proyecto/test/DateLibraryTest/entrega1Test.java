@@ -6,9 +6,10 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
+import org.junit.Assert;
 import org.junit.Test;
 
-import DateLibrary.CustomDateChecker;
+import DateLibrary.entrega1;
 
 public class entrega1Test {
 
@@ -148,31 +149,50 @@ public class entrega1Test {
 	}
 	
 /**Casos de prueba para el método isLeapYear**/
-	
-	@Test
-	public void isValidDate() {
-		assertFalse(entrega1.isLeapYear(1582));
-	}
 
-	
 	@Test
-	public void validateIsLeapYear_2() {
-		assertFalse(entrega1.isLeapYear(-2009));
-	}
+    public void validateIsLeapYear_1() {
+        boolean a = entrega1.isLeapYear(1582);
+        Assert.assertFalse(a);
+    }
 	
+	 @Test
+    public void validateIsLeapYear_2() {
+        boolean a = entrega1.isLeapYear(-1500);
+        Assert.assertFalse(a);
+    }
+
 	@Test
 	public void validateIsLeapYear_3() {
 		assertFalse(entrega1.isLeapYear(1583));
 	}
 	
 	@Test
-	public void validateIsLeapYear_4() {
+    public void validateIsLeapYear_4() {
 		assertTrue(entrega1.isLeapYear(1852));
-	}
+    }
 	
+    @Test
+    public void validateIsLeapYear_5() {
+        boolean a = entrega1.isLeapYear(1900);
+        Assert.assertFalse(a);
+    }
+
+    @Test
+    public void validateIsLeapYear_6() {
+        boolean a = entrega1.isLeapYear(1999);
+        Assert.assertFalse(a);
+    }
+
+    @Test
+    public void validateIsLeapYear_7() {
+        boolean a = entrega1.isLeapYear(2000);
+        boolean b = entrega1.isLeapYear(2004);
+        Assert.assertTrue(a && b);
+    }
+ 
 	/**Casos de prueba para el método dayOfWeek**/
 
-	
 	@Test
 	public void validateDayOfWeek_1() {
 		assertEquals(entrega1.dayOfWeek(1582, 2, 12), "N/A");
