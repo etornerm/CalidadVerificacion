@@ -152,13 +152,13 @@ public static String nextDay(int year,int month, int day){
     		String dayOfWeekInfo = "";
     		
         if(isValidDate(year,month,day)){
-            int a,y,m,d;
+            int a,countOfYears,countOfMonths,countOfDays;
             String[] DAYS_OF_WEEK = {"Domingo","Lunes","Martes","Miercoles","Jueves","Viernes","Sabado"};
             a = (14 - month) / 12;
-            y = year - a;
-            m = month + 12*a - 2;
-            d = (day + y + y/4 - y/100 + y/400 + (31*m)/12) % 7;
-            dayOfWeekInfo =  DAYS_OF_WEEK[d];
+            countOfYears = year - a;
+            countOfMonths = month + 12*a - 2;
+            countOfDays = (day + countOfYears + countOfYears/4 - countOfYears/100 + countOfYears/400 + (31*countOfMonths)/12) % 7;
+            dayOfWeekInfo =  DAYS_OF_WEEK[countOfDays];
         }else {
         		dayOfWeekInfo =  "N/A";
         }

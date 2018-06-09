@@ -1,8 +1,17 @@
 package DateLibrary;
 
+import static java.lang.System.out;
+
 import java.util.stream.IntStream;
 
 public class CustomDateChecker {
+	
+	  public static void main(String[] args)
+	  {
+		
+		  out.println(getNextDay(1582,2,12));
+	  }
+
 
     public static boolean isDateValid(int year, int month, int day) {
         return (isYearValid(year) && isMonthValid(month) && isDayValid(year, month, day));
@@ -10,7 +19,7 @@ public class CustomDateChecker {
 
     public static boolean isYearValid(int year) {
         int MINIMUM_YEAR = 1582;
-        return year >= MINIMUM_YEAR;
+        return year > MINIMUM_YEAR;
     }
 
     public static boolean isMonthValid(int month) {
