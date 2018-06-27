@@ -1,0 +1,52 @@
+# Ignore all the stuff we dont need
+
+# Intellij
+.idea/
+*.iml
+*.iws
+
+# Eclipse & Visual Studio Code
+.settings/
+.project
+.classpath
+bin/
+
+# Mac
+.DS_Store
+
+# Maven
+log/
+target/
+
+# Java
+# Compiled class files
+*.class
+
+# Package Files #
+*.jar
+*.war
+*.ear
+*.zip
+*.tar.gz
+*.rar
+
+# Bictbucket
+bitbucket-cloud-registry.xml
+bitbucket-server-registre.xml
+debugger.xml
+vcs.xml
+_windows/
+codestyles/
+
+# Screenshots
+AutomationScreenshots/
+
+# Exclude everything inside the reports folder
+testNG Report/
+
+# Exclude output folder
+output/
+
+# Exclude mmx.iml project file
+mmx2.iml
+

@@ -1,0 +1,16 @@
+{
+  "devices": {
+    "macbookRetina": {
+      "strategy": "viewportRetina",
+      "dpr": "2"
+    },
+
+    "browserStack": {
+      "strategy": "viewportPasting"
+    },
+
+    "default": {
+      "strategy": "viewportPasting"
+    }
+  }
+}
