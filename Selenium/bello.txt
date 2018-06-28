@@ -1,0 +1,43 @@
+public class TC1 extends BaseTest {
+    
+    WebDriver driver;
+
+    @BeforeTest
+    public void setup() throws Exception {
+
+        driver = super.getWebDriver();
+    }
+
+    @Test
+    public void VerifyPageTitle() throws IOException, InterruptedException {
+        try {
+            JavascriptExecutor jse = (JavascriptExecutor) driver;
+
+            /* Define URL to test */
+            super.getEnvUrl(driver);
+
+            /* Maximize Window and load */
+            // WebElement title = driver.findElement(By.tagName("title"));
+            Assert.assertEquals("nopCommerce demo store", driver.getTitle());
+            System.out.println("El titulo es correcto");
+
+            Thread.sleep(5000);
+            System.out.println("TC1: Paso correctamente");
+
+        } catch (Exception e){
+
+            super.errorLog(e);
+        }
+    }
+
+    @AfterMethod
+    public void tearDown(ITestResult result) throws IOException, InterruptedException {
+
+        if (ITestResult.FAILURE==result.getStatus()){
+            super.errorSS(driver);
+            System.out.println();
+        }
+
+        driver.quit();
+    }
+}
