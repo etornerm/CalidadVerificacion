@@ -1,6 +1,4 @@
 {
-  "remote": false,
-  "saucelabstool":false,
   "debugerror":true,
   "browser": "chrome",
   "device": "pc",
@@ -11,24 +9,5 @@
     "prod":"http://demo.nopcommerce.com",
     "stage":"http://demo.nopcommerce.com",
     "stagePath":"http://demo.nopcommerce.com"
-  },
-  "saucelabsuser":"xxx",
-  "saucelabsaccesskey":"xxx",
-  "saucelabs":{
-    "platform":"OS X 10.11",
-    "version":"53.0",
-    "screenResolution":"1600x1200"
-  },
-  "browserStack":{
-    "namebs":"xxx",
-    "automatekey":"xxx",
-    "browser":"Chrome",
-    "browserversion":"65.0",
-    "os":"OS X",
-    "browserstack.debug":true,
-    "osversion":"High Sierra",
-    "resolution":"1024x768",
-    "project":"TestTorner"
-  },
-  "screenshotspath":"/AutomationScreenshots/"
+  }
 }
