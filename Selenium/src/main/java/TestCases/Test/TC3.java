@@ -77,12 +77,13 @@ public class TC3 extends BaseTest {
         try {
 
             driver.findElement(By.cssSelector(".search-results .item-box:first-child .add-to-wishlist-button")).click();
-            Thread.sleep(2000);
-
-            Assert.assertEquals(driver.findElement(By.cssSelector(".header-links .wishlist-qty")).getText(), "(1)");
+            Thread.sleep(3000);
 
             driver.findElement(By.cssSelector("#bar-notification .close")).click();
             Thread.sleep(1000);
+
+            Assert.assertEquals(driver.findElement(By.cssSelector(".header-links .wishlist-qty")).getText(), "(1)");
+
 
         } catch (Exception e) {
 

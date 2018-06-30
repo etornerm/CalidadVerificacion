@@ -22,11 +22,58 @@ public class TC2 extends BaseTest {
         driver = super.getWebDriver();
     }
 
-    @Test(testName = "test",priority=2)
-    public void test() throws IOException, InterruptedException {
+    @Test(testName = "TestMenu",priority=2)
+    public void TestMenu() throws IOException, InterruptedException {
         try {
 
-            System.out.println("TC2: Paso correctamente");
+            /* Define URL to test */
+            super.getEnvUrl(driver);
+
+            Thread.sleep(3000);
+
+            driver.findElement(By.cssSelector(".header-menu .top-menu a[href*='/computers']")).click();
+            Thread.sleep(3000);
+
+            Assert.assertEquals(driver.findElement(By.cssSelector(".header-menu .top-menu a[href*='/computers']")).getText(),"Computers");
+
+            driver.findElement(By.cssSelector(".header-menu .top-menu a[href*='/electronics']")).click();
+            Thread.sleep(3000);
+
+            Assert.assertEquals(driver.findElement(By.cssSelector(".header-menu .top-menu a[href*='/electronics']")).getText(),"Electronics");
+
+            driver.findElement(By.cssSelector(".header-menu .top-menu a[href*='/apparel']")).click();
+            Thread.sleep(3000);
+
+            Assert.assertEquals(driver.findElement(By.cssSelector(".header-menu .top-menu a[href*='/apparel']")).getText(),"Apparel");
+
+            driver.findElement(By.cssSelector(".header-menu .top-menu a[href*='/digital-downloads']")).click();
+            Thread.sleep(3000);
+
+            Assert.assertEquals(driver.findElement(By.cssSelector(".header-menu .top-menu a[href*='/digital-downloads']")).getText(),"Digital downloads");
+
+            driver.findElement(By.cssSelector(".header-menu .top-menu a[href*='/books']")).click();
+            Thread.sleep(3000);
+
+            Assert.assertEquals(driver.findElement(By.cssSelector(".header-menu .top-menu a[href*='/books']")).getText(),"Books");
+
+            driver.findElement(By.cssSelector(".header-menu .top-menu a[href*='/jewelry']")).click();
+            Thread.sleep(3000);
+
+            Assert.assertEquals(driver.findElement(By.cssSelector(".header-menu .top-menu a[href*='/jewelry']")).getText(),"Jewelry");
+
+
+            driver.findElement(By.cssSelector(".header-menu .top-menu a[href*='/gift-cards']")).click();
+            Thread.sleep(3000);
+
+            Assert.assertEquals(driver.findElement(By.cssSelector(".header-menu .top-menu a[href*='/gift-cards']")).getText(),"Gift Cards");
+
+
+            driver.findElement(By.cssSelector(".header-logo  a[href*='/']")).click();
+            Thread.sleep(3000);
+
+
+            System.out.println("TC2: Pasó correctamente");
+
         } catch (Exception e){
 
             super.errorLog(e);

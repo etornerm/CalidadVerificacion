@@ -21,10 +21,15 @@ public class TC1 extends BaseTest {
         driver = super.getWebDriver();
     }
 
-    @Test(testName = "test",priority=1)
-    public void test() throws IOException, InterruptedException {
+    @Test(testName = "Abrir el navegador",priority=1)
+    public void CheckTitle() throws IOException, InterruptedException {
         try {
+            /* Define URL to test */
+            super.getEnvUrl(driver);
+            Assert.assertEquals("nopCommerce demo store", driver.getTitle());
+            System.out.println("El titulo es correcto");
 
+            Thread.sleep(5000);
             System.out.println("TC1: Paso correctamente");
 
         } catch (Exception e){
