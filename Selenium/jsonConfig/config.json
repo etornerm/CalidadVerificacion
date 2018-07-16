@@ -1,7 +1,7 @@
 {
   "debugerror":true,
   "browser": "chrome",
-  "device": "pc",
+  "device": "linux",
   "environment": "stage",
   "resolution-height":"600",
   "resolution-width":"1240",
