@@ -3,17 +3,27 @@
 <suite thread-count="1" verbose="1" name="Suite" parallel="tests">
     <test name="TC1">
         <classes>
-            <class name="TestCases.Test.HW1.TC1"/>
+            <class name="TestCases.Test.HW2.TC1"/>
         </classes>
     </test> <!-- TC1 -->
     <test name="TC2">
         <classes>
-            <class name="TestCases.Test.HW1.TC2"/>
+            <class name="TestCases.Test.HW2.TC2"/>
         </classes>
     </test> <!-- TC2 -->
     <test name="TC3">
         <classes>
-            <class name="TestCases.Test.HW1.TC3"/>
+            <class name="TestCases.Test.HW2.TC3"/>
         </classes>
     </test> <!-- TC3 -->
+    <test name="TC4">
+        <classes>
+            <class name="TestCases.Test.HW2.TC4"/>
+        </classes>
+    </test> <!-- TC4 -->
+    <test name="TC5">
+        <classes>
+            <class name="TestCases.Test.HW2.TC5"/>
+        </classes>
+    </test> <!-- TC5 -->
 </suite> <!-- Suite -->
