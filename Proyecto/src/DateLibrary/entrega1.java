@@ -13,8 +13,11 @@ public class entrega1
 	  out.println(isValidDate(1992,5,13));
 	  out.println(dayOfWeek(1853,12,31));
 	  out.println(nextDay(1852,3,31));
+	  
+	  int [] fecha = new int[] {1956,12,15};
+	  out.println(fechaFutura(fecha, 80));
   }
-
+ 
 /**
  * Metodo que devuelve el dia del año que refresenta una fecha dada.
  * @param month es el mes de la fecha que se desea calcular
@@ -165,4 +168,54 @@ public static String nextDay(int year,int month, int day){
         
         return dayOfWeekInfo;
     }
+
+	/**
+	 * Metodo que determina la fecha que será en N días en el futuro
+	 * @param date arreglo que contiene 3 numeros enteros (year, month, day).
+	 * @param diasAFuturo es el número de días que se sumará a la fecha dada (es un número entero no negativo).
+	 * @return fecha que será en los días dados a futuro
+	 */
+
+	public static String fechaFutura(int[]currentDate, int diasAFuturo){
+		int year = currentDate[0];
+		int month = currentDate[1];
+		int day = currentDate[2];
+		int sumOfDays = diasAFuturo + day;
+		
+		String mnsjFechaFutura = "";
+		
+		if(diasAFuturo > 0 && isValidDate(year, month, day)) {
+			mnsjFechaFutura = obtenerFechaFutura(year, month, sumOfDays);
+		}else {
+			mnsjFechaFutura = "N/A";
+		}
+		return  mnsjFechaFutura;
+	}
+	
+	/**
+	 * Metodo que valida y agrega dias a la fecha deseada
+	 * @param year es el año que se va verificar.
+     * @param month es el mes que se va verificar.
+     * @param day es el dia que se va verificar. (ya contiene los días que se desean sumar a la fecha)
+	 * @return fecha que será en los días dados a futuro
+	 */
+
+	private static String obtenerFechaFutura(int year, int month, int day){
+
+		if(day > daysByMonth(month,year) ){
+			day -= daysByMonth(month,year);
+			month += 1;
+			if (month > 12){
+				month = 1;
+				year += 1;
+			}
+		}else{
+			if ( day <= daysByMonth(month, year)){
+				return "("+year+","+month+","+day+")";
+			}
+		}
+
+		return obtenerFechaFutura(year, month, day);
+	}
+
 }
