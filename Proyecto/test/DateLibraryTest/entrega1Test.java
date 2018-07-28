@@ -152,14 +152,12 @@ public class entrega1Test {
 
 	@Test
     public void validateIsLeapYear_1() {
-        boolean a = entrega1.isLeapYear(1582);
-        Assert.assertFalse(a);
+        Assert.assertFalse(entrega1.isLeapYear(1582));
     }
 	
 	 @Test
     public void validateIsLeapYear_2() {
-        boolean a = entrega1.isLeapYear(-1500);
-        Assert.assertFalse(a);
+        Assert.assertFalse(entrega1.isLeapYear(-1500));
     }
 
 	@Test
@@ -174,21 +172,18 @@ public class entrega1Test {
 	
     @Test
     public void validateIsLeapYear_5() {
-        boolean a = entrega1.isLeapYear(1900);
-        Assert.assertFalse(a);
+        Assert.assertFalse(entrega1.isLeapYear(1900));
     }
 
     @Test
     public void validateIsLeapYear_6() {
-        boolean a = entrega1.isLeapYear(1999);
-        Assert.assertFalse(a);
+        Assert.assertFalse(entrega1.isLeapYear(1999));
     }
 
     @Test
     public void validateIsLeapYear_7() {
-        boolean a = entrega1.isLeapYear(2000);
-        boolean b = entrega1.isLeapYear(2004);
-        Assert.assertTrue(a && b);
+        Assert.assertTrue(entrega1.isLeapYear(2000));
+        Assert.assertTrue(entrega1.isLeapYear(2004));
     }
  
 	/**Casos de prueba para el método dayOfWeek**/
@@ -257,5 +252,61 @@ public class entrega1Test {
 	public void validateDayOfWeek_13() {
 		assertEquals(entrega1.dayOfWeek(1583, 12, 31), "Sabado");
 	}
+	
+	/**Casos de prueba para los métodos encargados de obtener la fecha futura**/
+	
+	@Test
+	public void validateFutureDate_1() {
+		int [] date = new int[] {1582, 1, 13};
+		assertEquals(entrega1.futureDate(date, 2), "N/A");
+	}
+	
+	@Test
+	public void validateFutureDate_2() {
+		int [] date = new int[] {-2009, 3, 15};
+		assertEquals(entrega1.futureDate(date, 12), "N/A");
+	}
+	
+	@Test
+	public void validateFutureDate_3() {
+		int [] date = new int[] {1956, 12, 15};
+		assertEquals(entrega1.futureDate(date, 80), "(1957,3,5)");
+	}
+	
+	@Test
+	public void validateFutureDate_4() {
+		int [] date = new int[] {1998, 4, 5};
+		assertEquals(entrega1.futureDate(date, -3), "N/A");
+	}
+	
+	@Test
+	public void validateFutureDate_5() {
+		int [] date = new int[] {1776, 6, 19};
+		assertEquals(entrega1.futureDate(date, 0), "N/A");
+	}
 
+	@Test
+	public void validateFutureDate_6() {
+		int [] date = new int[] {1991, 13, 11};
+		assertEquals(entrega1.futureDate(date, 4), "N/A");
+	}
+	
+	@Test
+	public void validateFutureDate_7() {
+		int [] date = new int[] {2003, 7, 33};
+		assertEquals(entrega1.futureDate(date, 8), "N/A");
+	}
+
+	@Test
+	public void validateFutureDate_8() {
+		int [] date = new int[] {2014, 6, 12};
+		assertEquals(entrega1.futureDate(date, 10), "(2014,6,22)");
+	}
+	
+	@Test
+	public void validateFutureDate_9() {
+		int [] date = new int[] {2014, 6, 12};
+		assertEquals(entrega1.futureDate(date, 20), "(2014,7,2)");
+	}
+	
 }

@@ -15,7 +15,7 @@ public class entrega1
 	  out.println(nextDay(1852,3,31));
 	  
 	  int [] fecha = new int[] {1956,12,15};
-	  out.println(fechaFutura(fecha, 80));
+	  out.println(futureDate(fecha, 80));
   }
  
 /**
@@ -176,20 +176,20 @@ public static String nextDay(int year,int month, int day){
 	 * @return fecha que será en los días dados a futuro
 	 */
 
-	public static String fechaFutura(int[]currentDate, int diasAFuturo){
+	public static String futureDate(int[]currentDate, int futureDays){
 		int year = currentDate[0];
 		int month = currentDate[1];
 		int day = currentDate[2];
-		int sumOfDays = diasAFuturo + day;
+		int sumOfDays = futureDays + day;
 		
-		String mnsjFechaFutura = "";
+		String futureDateMessage = "";
 		
-		if(diasAFuturo > 0 && isValidDate(year, month, day)) {
-			mnsjFechaFutura = obtenerFechaFutura(year, month, sumOfDays);
+		if(futureDays > 0 && isValidDate(year, month, day)) {
+			futureDateMessage = getFutureDate(year, month, sumOfDays);
 		}else {
-			mnsjFechaFutura = "N/A";
+			futureDateMessage = "N/A";
 		}
-		return  mnsjFechaFutura;
+		return  futureDateMessage;
 	}
 	
 	/**
@@ -200,22 +200,23 @@ public static String nextDay(int year,int month, int day){
 	 * @return fecha que será en los días dados a futuro
 	 */
 
-	private static String obtenerFechaFutura(int year, int month, int day){
-
+	private static String getFutureDate(int year, int month, int day){
+		int MONTH_NUMBER = 12;
+		
 		if(day > daysByMonth(month,year) ){
 			day -= daysByMonth(month,year);
 			month += 1;
-			if (month > 12){
+			if (month > MONTH_NUMBER){
 				month = 1;
 				year += 1;
 			}
 		}else{
-			if ( day <= daysByMonth(month, year)){
+			if (day <= daysByMonth(month, year)){
 				return "("+year+","+month+","+day+")";
 			}
 		}
 
-		return obtenerFechaFutura(year, month, day);
+		return getFutureDate(year, month, day);
 	}
 
 }
