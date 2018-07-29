@@ -16,8 +16,9 @@ public class entrega1
 	  
 	  int [] fecha = new int[] {1956,12,15};
 	  out.println(futureDate(fecha, 80));
+	  out.println(dayBetweenDates(new int[] {2009, 1, 1}, new int[] {2009, 1, 1}));
   }
- 
+
 /**
  * Metodo que devuelve el dia del año que refresenta una fecha dada.
  * @param month es el mes de la fecha que se desea calcular
@@ -171,8 +172,8 @@ public static String nextDay(int year,int month, int day){
 
 	/**
 	 * Metodo que determina la fecha que será en N días en el futuro
-	 * @param date arreglo que contiene 3 numeros enteros (year, month, day).
-	 * @param diasAFuturo es el número de días que se sumará a la fecha dada (es un número entero no negativo).
+	 * @param currentDate arreglo que contiene 3 numeros enteros (year, month, day).
+	 * @param futureDays es el número de días que se sumará a la fecha dada (es un número entero no negativo).
 	 * @return fecha que será en los días dados a futuro
 	 */
 
@@ -219,4 +220,49 @@ public static String nextDay(int year,int month, int day){
 		return getFutureDate(year, month, day);
 	}
 
+    /**
+     * Metodo que valida y verificar la diferencia de dias entre dos fechas.
+     * @param dateOne arreglo que contiene 3 numeros enteros (year, month, day).
+     * @param dateTwo arreglo que contiene 3 numeros enteros (year, month, day).
+     * @return numero entero de la diferencia en dias de las dos fechas dadas, si alguna fecha fuera invalida, se retorna -1.
+     */
+
+    public static int dayBetweenDates(int[]dateOne, int[]dateTwo){
+        int yearOne = dateOne[0];
+        int monthOne = dateOne[1];
+        int dayOne = dateOne[2];
+
+        int yearTwo = dateTwo[0];
+        int monthTwo = dateTwo[1];
+        int dayTwo = dateTwo[2];
+
+        int different;
+
+        if(!isValidDate(yearOne, monthOne, dayOne) || !isValidDate(yearTwo, monthTwo, dayTwo)){
+            return -1;
+        }
+
+        different = getDaysFromDate(yearOne,monthOne,dayOne) - getDaysFromDate(yearTwo,monthTwo,dayTwo);
+
+        if(different < 0){
+            different = different * -1;
+        }
+
+        return different;
+    }
+
+
+    /**
+     * Metodo que devuelve la cantidad de days de una fecha dada,formula tomada de https://alcor.concordia.ca/~gpkatch/gdate-algorithm.html.
+     * @param year es el año que se va verificar.
+     * @param month es el mes que se va verificar.
+     * @param day es el dia que se va verificar.
+     * @return número de días transcurridos de la fecha dada.
+     */
+    private static int getDaysFromDate(int year, int month, int day){
+        int m = (month + 9) % 12;
+        int y = year - m/10;
+        int d = day;
+        return 365*y + y/4 - y/100 + y/400 + (m*306 + 5)/10 + ( d - 1 );
+    }
 }

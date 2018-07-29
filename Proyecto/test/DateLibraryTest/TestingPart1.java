@@ -1,6 +1,7 @@
 package DateLibraryTest;
 
 import DateLibrary.CustomDateChecker;
+import DateLibrary.entrega1;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -127,5 +128,28 @@ public class TestingPart1 {
         Assert.assertEquals("invalid date", a);
     }
 
+    @Test
+    public void validDayBetweenDates() {
+        int [] dateOne = new int[] {2008, 12, 31};
+        int [] dateTwo = new int[] {2009, 1, 1};
+        int a = entrega1.dayBetweenDates(dateOne,dateTwo);
+        Assert.assertEquals(1, a);
+    }
+
+    @Test
+    public void validDayBetweenDatesSameDate() {
+        int [] dateOne = new int[] {2014, 6, 12};
+        int [] dateTwo = new int[] {2014, 6, 12};
+        int a = entrega1.dayBetweenDates(dateOne,dateTwo);
+        Assert.assertEquals(0, a);
+    }
+
+    @Test
+    public void invalidDayBetweenDatesInvalidDate() {
+        int [] dateOne = new int[] {1540, 15, 12};
+        int [] dateTwo = new int[] {1520, 10, 10};
+        int a = entrega1.dayBetweenDates(dateOne,dateTwo);
+        Assert.assertEquals(-1, a);
+    }
 
 }
