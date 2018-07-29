@@ -309,34 +309,35 @@ public class entrega1Test {
 		assertEquals(entrega1.futureDate(date, 20), "(2014,7,2)");
 	}
 
-	/**Casos de prueba para los métodos encargados de obtener la fecha futura**/
+	/**Casos de prueba para los métodos encargados de obtener la cantidad de dias entre dos fechas**/
+
 	@Test
 	public void validDayBetweenDates_1() {
-		int [] dateOne = new int[] {2008, 12, 31};
+		int [] dateOne = new int[] {-2005, 12, 31};
 		int [] dateTwo = new int[] {2009, 1, 1};
 		int a = entrega1.dayBetweenDates(dateOne,dateTwo);
-		Assert.assertEquals(1, a);
+		Assert.assertEquals(-1, a);
 	}
 	@Test
 	public void validDayBetweenDates_2() {
-		int [] dateOne = new int[] {2012, 11, 25};
+		int [] dateOne = new int[] {1400, 11, 25};
 		int [] dateTwo = new int[] {2009, 1, 1};
 		int a = entrega1.dayBetweenDates(dateOne,dateTwo);
-		Assert.assertEquals(1424, a);
+		Assert.assertEquals(-1, a);
 	}
 	@Test
 	public void validDayBetweenDates_3() {
-		int [] dateOne = new int[] {2008, 1, 2};
-		int [] dateTwo = new int[] {2008, 5, 1};
+		int [] dateOne = new int[] {2018, 2, 40};
+		int [] dateTwo = new int[] {2018, 2, 30};
 		int a = entrega1.dayBetweenDates(dateOne,dateTwo);
-		Assert.assertEquals(120, a);
+		Assert.assertEquals(-1, a);
 	}
 	@Test
 	public void validDayBetweenDates_4() {
-		int [] dateOne = new int[] {2018, 4, 6};
-		int [] dateTwo = new int[] {2018, 8, 22};
+		int [] dateOne = new int[] {2018, 4, 1};
+		int [] dateTwo = new int[] {2018, 4, 1};
 		int a = entrega1.dayBetweenDates(dateOne,dateTwo);
-		Assert.assertEquals(138, a);
+		Assert.assertEquals(0, a);
 	}
 	@Test
 	public void validDayBetweenDates_5() {
@@ -347,18 +348,9 @@ public class entrega1Test {
 	}
 	@Test
 	public void validDayBetweenDates_6() {
-		int [] dateOne = new int[] {2018, 1, 31};
-		int [] dateTwo = new int[] {2018, 12, 1};
-		int a = entrega1.dayBetweenDates(dateOne,dateTwo);
-		Assert.assertEquals(304, a);
-	}
-	@Test
-	public void validDayBetweenDates_7() {
-		int [] dateOne = new int[] {2000, 1, 1};
+		int [] dateOne = new int[] {2018, 12, 31};
 		int [] dateTwo = new int[] {2018, 1, 1};
 		int a = entrega1.dayBetweenDates(dateOne,dateTwo);
-		Assert.assertEquals(6575, a);
+		Assert.assertEquals(364, a);
 	}
-
-	
 }

@@ -242,6 +242,10 @@ public static String nextDay(int year,int month, int day){
             return -1;
         }
 
+        if(yearOne == yearTwo && monthOne == monthTwo && dayOne == dayTwo){
+            return 0;
+        }
+
         different = getDaysFromDate(yearOne,monthOne,dayOne) - getDaysFromDate(yearTwo,monthTwo,dayTwo);
 
         if(different < 0){
