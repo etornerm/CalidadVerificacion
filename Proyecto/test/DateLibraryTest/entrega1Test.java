@@ -2,14 +2,12 @@ package DateLibraryTest;
 
 import DateLibrary.entrega1;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
-
 import org.junit.Assert;
 import org.junit.Test;
 
 import DateLibrary.entrega1;
+
+import static org.junit.Assert.*;
 
 public class entrega1Test {
 
@@ -255,58 +253,63 @@ public class entrega1Test {
 	
 	/**Casos de prueba para los métodos encargados de obtener la fecha futura**/
 	
-	@Test
-	public void validateFutureDate_1() {
-		int [] date = new int[] {1582, 1, 13};
-		assertEquals(entrega1.futureDate(date, 2), "N/A");
+	@Test(expected = Exception.class)
+	public void validatePastDate_1() throws Exception {
+		int [] date = new int[] {1511, 1, 13};
+		entrega1.getPastDate(date, 14);
 	}
-	
-	@Test
-	public void validateFutureDate_2() {
-		int [] date = new int[] {-2009, 3, 15};
-		assertEquals(entrega1.futureDate(date, 12), "N/A");
+
+	@Test(expected = Exception.class)
+	public void validatePastDate_2() throws Exception{
+		int [] date = new int[] {1900, 1, 13};
+		entrega1.getPastDate(date, 0);
 	}
-	
-	@Test
-	public void validateFutureDate_3() {
-		int [] date = new int[] {1956, 12, 15};
-		assertEquals(entrega1.futureDate(date, 80), "(1957,3,5)");
+
+	@Test(expected = Exception.class)
+	public void validatePastDate_3() throws Exception{
+		int [] date = new int[] {1900, 1, 13};
+		entrega1.getPastDate(date, -1);
 	}
-	
-	@Test
-	public void validateFutureDate_4() {
-		int [] date = new int[] {1998, 4, 5};
-		assertEquals(entrega1.futureDate(date, -3), "N/A");
-	}
-	
-	@Test
-	public void validateFutureDate_5() {
-		int [] date = new int[] {1776, 6, 19};
-		assertEquals(entrega1.futureDate(date, 0), "N/A");
+
+	@Test(expected = Exception.class)
+	public void validatePastDate_4() throws Exception{
+		int [] date = new int[] {1900, 1, 13, 12};
+		entrega1.getPastDate(date, 1);
 	}
 
 	@Test
-	public void validateFutureDate_6() {
-		int [] date = new int[] {1991, 13, 11};
-		assertEquals(entrega1.futureDate(date, 4), "N/A");
-	}
-	
-	@Test
-	public void validateFutureDate_7() {
-		int [] date = new int[] {2003, 7, 33};
-		assertEquals(entrega1.futureDate(date, 8), "N/A");
+	public void validatePastDate_5() throws Exception{
+		int [] date = new int[] {2018, 1, 13};
+		int [] expected = new int [] {2018, 1, 10};
+		assertArrayEquals(expected, entrega1.getPastDate(date, 3));
 	}
 
 	@Test
-	public void validateFutureDate_8() {
-		int [] date = new int[] {2014, 6, 12};
-		assertEquals(entrega1.futureDate(date, 10), "(2014,6,22)");
+	public void validatePastDate_6() throws Exception{
+		int [] date = new int[] {2018, 9, 12};
+		int [] expected = new int [] {2018, 8, 31};
+		assertArrayEquals(expected, entrega1.getPastDate(date, 12));
 	}
-	
+
 	@Test
-	public void validateFutureDate_9() {
-		int [] date = new int[] {2014, 6, 12};
-		assertEquals(entrega1.futureDate(date, 20), "(2014,7,2)");
+	public void validatePastDate_7() throws Exception{
+		int [] date = new int[] {2018, 9, 12};
+		int [] expected = new int [] {2018, 7, 31};
+		assertArrayEquals(expected, entrega1.getPastDate(date, 43));
+	}
+
+	@Test
+	public void validatePastDate_8() throws Exception{
+		int [] date = new int[] {2018, 1, 15};
+		int [] expected = new int [] {2018, 1, 15};
+		assertArrayEquals(expected, entrega1.getPastDate(date, 0));
+	}
+
+	@Test
+	public void validatePastDate_9() throws Exception{
+		int [] date = new int[] {2018, 1, 1};
+		int [] expected = new int [] {2017, 12, 31};
+		assertArrayEquals(expected, entrega1.getPastDate(date, 1));
 	}
 
 	/**Casos de prueba para los métodos encargados de obtener la cantidad de dias entre dos fechas**/

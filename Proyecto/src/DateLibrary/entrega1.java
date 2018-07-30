@@ -176,7 +176,6 @@ public static String nextDay(int year,int month, int day){
 	 * @param futureDays es el número de días que se sumará a la fecha dada (es un número entero no negativo).
 	 * @return fecha que será en los días dados a futuro
 	 */
-
 	public static String futureDate(int[]currentDate, int futureDays){
 		int year = currentDate[0];
 		int month = currentDate[1];
@@ -220,6 +219,33 @@ public static String nextDay(int year,int month, int day){
 		return getFutureDate(year, month, day);
 	}
 
+	/**
+	 * Metodo que devuelve la fecha n dias antes a la dada
+	 * @param date fecha de referencia en orden: año, mes y dia.
+	 * @param offset dias de diferencia.
+	 * @return fecha en el pasado
+	 */
+	public static int[] getPastDate(int[] date, int offset) throws Exception {
+		if (!isValidDate(date[0], date[1], date[2]) || offset < 0 || date.length != 3)
+			throw new Exception();
+		if (offset >= date[2]){
+			recalculateAndRecallPastDate(date, offset);
+		} else {
+			date[2] -= offset;
+		}
+		return date;
+	}
+
+	private static void recalculateAndRecallPastDate(int[] date, int offset) throws Exception {
+		offset = Math.abs(offset -= date[2]);
+		date[1]--;
+		if (date[1] == 0) {
+			date[0]--;
+			date[1] = 12;
+		}
+		date[2] = daysByMonth(date[1], date[0]);
+		getPastDate(date, offset);
+	}
     /**
      * Metodo que valida y verificar la diferencia de dias entre dos fechas.
      * @param dateOne arreglo que contiene 3 numeros enteros (year, month, day).
